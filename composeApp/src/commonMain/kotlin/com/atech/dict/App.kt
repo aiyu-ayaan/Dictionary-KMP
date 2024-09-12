@@ -1,37 +1,46 @@
 package com.atech.dict
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
-
-import dictionary.composeapp.generated.resources.Res
-import dictionary.composeapp.generated.resources.compose_multiplatform
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.atech.dict.ui.MainScreen
+import com.atech.dict.ui.MainViewModel
+import org.koin.compose.KoinContext
+import org.koin.compose.currentKoinScope
 
 @Composable
-@Preview
 fun App() {
     MaterialTheme {
-        var showContent by remember { mutableStateOf(false) }
-        Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Button(onClick = { showContent = !showContent }) {
-                Text("Click me!")
-            }
-            AnimatedVisibility(showContent) {
-                val greeting = remember { Greeting().greet() }
-                Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-                    Image(painterResource(Res.drawable.compose_multiplatform), null)
-                    Text("Compose: $greeting")
+        KoinContext {
+            val navController = rememberNavController()
+            val viewModel = koinViewModel<MainViewModel>()
+            val state by viewModel.definitions
+            NavHost(
+                navController = navController,
+                startDestination = "main"
+            ) {
+                composable("main") {
+                    MainScreen(
+                        getDefinition = { word ->
+                            viewModel.getDefinition(word)
+                        },
+                        items = state
+                    )
                 }
             }
         }
+    }
+}
+
+@Composable
+inline fun <reified T : ViewModel> koinViewModel(): T {
+    val scope = currentKoinScope()
+    return viewModel {
+        scope.get<T>()
     }
 }

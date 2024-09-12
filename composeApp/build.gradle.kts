@@ -13,23 +13,23 @@ plugins {
 }
 
 kotlin {
-    @OptIn(ExperimentalWasmDsl::class)
-    wasmJs {
-        moduleName = "composeApp"
-        browser {
-            val projectDirPath = project.projectDir.path
-            commonWebpackConfig {
-                outputFileName = "composeApp.js"
-                devServer = (devServer?.copy(9091) ?: KotlinWebpackConfig.DevServer()).apply {
-                    static = (static ?: mutableListOf()).apply {
-                        // Serve sources to debug inside browser
-                        add(projectDirPath)
-                    }
-                }
-            }
-        }
-        binaries.executable()
-    }
+//    @OptIn(ExperimentalWasmDsl::class)
+//    wasmJs {
+//        moduleName = "composeApp"
+//        browser {
+//            val projectDirPath = project.projectDir.path
+//            commonWebpackConfig {
+//                outputFileName = "composeApp.js"
+//                devServer = (devServer?.copy(port= 3000) ?: KotlinWebpackConfig.DevServer()).apply {
+//                    static = (static ?: mutableListOf()).apply {
+//                        // Serve sources to debug inside browser
+//                        add(projectDirPath)
+//                    }
+//                }
+//            }
+//        }
+//        binaries.executable()
+//    }
 
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
@@ -47,6 +47,10 @@ kotlin {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
             implementation(libs.ktor.client.okhttp)
+
+            implementation(libs.koin.android)
+            implementation(libs.koin.androidx.compose)
+            implementation (libs.accompanist.systemuicontroller)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -58,15 +62,19 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(libs.bundles.ktor)
+
+            api(libs.koin.core)
+            implementation(libs.koin.compose)
+            implementation(libs.navigation.compose)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutines.swing)
             implementation(libs.ktor.client.okhttp)
         }
-        jsMain.dependencies {
-            implementation(libs.ktor.client.json)
-        }
+//        jsMain.dependencies {
+//            implementation(libs.ktor.client.json)
+//        }
     }
 }
 
