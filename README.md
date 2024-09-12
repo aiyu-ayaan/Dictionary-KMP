@@ -12,7 +12,6 @@ Dictionary-KMP is a Kotlin Multiplatform (KMP) project that provides word defini
 ## Prerequisites
 
 - [Kotlin](https://kotlinlang.org/) installed on your machine.
-- [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) with KMP support.
 - [Gradle](https://gradle.org/install/) for building and running the project.
 
 ## Getting Started
