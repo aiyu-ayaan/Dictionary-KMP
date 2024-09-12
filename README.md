@@ -1,18 +1,69 @@
-This is a Kotlin Multiplatform project targeting Android, Web, Desktop.
+# Dictionary-KMP
 
-* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
+Dictionary-KMP is a Kotlin Multiplatform (KMP) project that provides word definitions by integrating with a dictionary API. It uses **Ktor Server** for handling requests, **Koin** for dependency injection, and **Ktor Client** for fetching word meanings from an external API. The project is designed to work across platforms including Android and Desktop.
+
+## Features
+
+- **KMP Architecture**: Share business logic across platforms.
+- **Koin**: Manage dependencies.
+- **Ktor Client**: Fetch word meanings from the external API.
+- **Navigation Component**: Easily navigate between screens in the Android app.
+
+## Prerequisites
+
+- [Kotlin](https://kotlinlang.org/) installed on your machine.
+- [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) with KMP support.
+- [Gradle](https://gradle.org/install/) for building and running the project.
+
+## Getting Started
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/aiyu-ayaan/Dictionary-KMP.git
+cd Dictionary-KMP
+```
+
+### Compile and Run for Desktop
+
+To compile and run the project on the desktop, use the following command:
+
+```bash
+./gradlew run
+```
+
+This will start the desktop application, where you can search for word definitions.
+
+### Running the Android Application
+
+1. Open the project in Android Studio.
+2. Connect an Android device or use an emulator.
+3. Build and run the project via Android Studio.
+
+### Ktor Server
+
+This project depends on a **Ktor Server** for fetching word definitions. Make sure to run the Ktor server available at [Dictionary-KMP Ktor Server GitHub](https://github.com/aiyu-ayaan/Dictionary-KMP.git) before running the client applications to ensure proper responses from the API.
+
+## Screenshots
+
+### Android App
+
+<img src="mobile.png" height="500">
+
+### Desktop App
+
+<img src="desktop.png" height="400">
 
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html),
-[Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform/#compose-multiplatform),
-[Kotlin/Wasm](https://kotl.in/wasm/)…
+## License
 
-We would appreciate your feedback on Compose/Web and Kotlin/Wasm in the public Slack channel [#compose-web](https://slack-chats.kotlinlang.org/c/compose-web).
-If you face any issues, please report them on [GitHub](https://github.com/JetBrains/compose-multiplatform/issues).
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
 
-You can open the web application by running the `:composeApp:wasmJsBrowserDevelopmentRun` Gradle task.
+## GitHub
+
+[Dictionary KMP GitHub Repo](https://github.com/aiyu-ayaan/Dictionary-Ktor-Server.git)
+
+### Key Changes:
+
+1. **Ktor Server**: Mentioned that the server is in a separate repo and added the link for it.
+2. **Run the Ktor Server**: Added a note to ensure the server is running for proper API responses.
