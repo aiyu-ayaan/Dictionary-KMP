@@ -41,7 +41,7 @@ This will start the desktop application, where you can search for word definitio
 
 ### Ktor Server
 
-This project depends on a **Ktor Server** for fetching word definitions. Make sure to run the Ktor server available at [Dictionary-KMP Ktor Server GitHub](https://github.com/aiyu-ayaan/Dictionary-KMP.git) before running the client applications to ensure proper responses from the API.
+This project depends on a **Ktor Server** for fetching word definitions. Make sure to run the Ktor server available at [Dictionary-KMP Ktor Server GitHub](https://github.com/aiyu-ayaan/Dictionary-Ktor-Server) before running the client applications to ensure proper responses from the API.
 
 ## Screenshots
 
