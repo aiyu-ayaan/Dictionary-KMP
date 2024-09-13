@@ -19,17 +19,16 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Button
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
-import androidx.compose.material.TextFieldDefaults
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.Button
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -111,12 +110,11 @@ fun SearchBar(
                 .heightIn(min = 56.dp),
             placeholder = { Text("Enter a word") },
             leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
-            colors = TextFieldDefaults.textFieldColors(
-                backgroundColor = MaterialTheme.colors.surface,
+            shape = RoundedCornerShape(28.dp),
+            colors = TextFieldDefaults.colors(
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent
             ),
-            shape = RoundedCornerShape(28.dp),
             singleLine = true,
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
             keyboardActions = KeyboardActions(onSearch = { onSearch() })
@@ -148,8 +146,8 @@ fun ErrorMessage(message: String?) {
     ) {
         Text(
             text = message ?: "An error occurred",
-            style = MaterialTheme.typography.h6,
-            color = MaterialTheme.colors.error,
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.error,
             textAlign = TextAlign.Center
         )
     }
@@ -163,7 +161,7 @@ fun LoadingIndicator() {
     ) {
         CircularProgressIndicator(
             modifier = Modifier.size(48.dp),
-            color = MaterialTheme.colors.primary
+            color = MaterialTheme.colorScheme.primary
         )
     }
 }
@@ -179,7 +177,7 @@ fun EmptyState(word: String, isButtonClicked: Boolean) {
                 "No results found for '$word'"
             else
                 "Search for a word to see its definition",
-            style = MaterialTheme.typography.h6,
+            style = MaterialTheme.typography.bodySmall,
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(16.dp)
         )
