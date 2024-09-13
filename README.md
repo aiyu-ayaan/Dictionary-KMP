@@ -12,7 +12,6 @@ Dictionary-KMP is a Kotlin Multiplatform (KMP) project that provides word defini
 ## Prerequisites
 
 - [Kotlin](https://kotlinlang.org/) installed on your machine.
-- [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) with KMP support.
 - [Gradle](https://gradle.org/install/) for building and running the project.
 
 ## Getting Started
@@ -42,7 +41,7 @@ This will start the desktop application, where you can search for word definitio
 
 ### Ktor Server
 
-This project depends on a **Ktor Server** for fetching word definitions. Make sure to run the Ktor server available at [Dictionary-KMP Ktor Server GitHub](https://github.com/aiyu-ayaan/Dictionary-KMP.git) before running the client applications to ensure proper responses from the API.
+This project depends on a **Ktor Server** for fetching word definitions. Make sure to run the Ktor server available at [Dictionary-KMP Ktor Server GitHub](https://github.com/aiyu-ayaan/Dictionary-Ktor-Server) before running the client applications to ensure proper responses from the API.
 
 ## Screenshots
 
